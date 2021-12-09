@@ -30,7 +30,7 @@ export const Busqueda = () => {
     };
 
     return (
-        <div className="row">
+        <div className="row mx-0">
             <NavBarSeachLost />
             {
                 publicaciones.map(mascota => (

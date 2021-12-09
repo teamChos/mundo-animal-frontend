@@ -19,7 +19,7 @@ const fetchSinToken = (endpoint, data, method = 'GET') => {
 };
 
 const fetchConToken = (endpoint, data, method = 'GET') => {
-    const url = `${localUrl}/${endpoint}`;
+    const url = `${baseUrl}/${endpoint}`;
 
     const token = localStorage.getItem('token') || '';
     
@@ -43,7 +43,7 @@ const fetchConToken = (endpoint, data, method = 'GET') => {
 };
 
 const fetchConTokenFiles = (endpoint, data, method = 'GET') => {
-    const url = `${localUrl}/${endpoint}`;
+    const url = `${baseUrl}/${endpoint}`;
 
     const token = localStorage.getItem('token') || '';
     
