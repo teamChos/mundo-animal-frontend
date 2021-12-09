@@ -1,0 +1,53 @@
+.autenticacion{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-content: center;
+    background-image: url("../../images/Fondo-Huellas.png");
+};
+
+.auth-registro{
+    background-image: url("../../images/Fondo-Huellas.png");
+}
+
+.auth{
+    align-self: center;
+    justify-self: center;
+};
+
+.auth-logo{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 50% 50%;
+    align-self: end;
+    justify-self: center;
+};
+
+.logo-texto{
+    align-self: center;
+    justify-self: center;
+    grid-column: 1/3;
+}
+
+.w-75{
+    align-self: center;
+    justify-self: center;
+    grid-column: 1/3;
+}
+
+.auth-logo h1{
+    font-size: 50px;
+    font-weight: bold
+};
+
+.auth h2{
+    font-size: 25px;
+    font-weight: 300;
+};
+
+.error {
+    color: orangered;
+    font-size: small;
+    font-weight: 300;
+};
+
+@import "bootstrap";
