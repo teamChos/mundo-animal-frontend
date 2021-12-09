@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 
 import { useHistory } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ import logoPost from '../../images/logo-post.svg';
 
 import './post.scss';
 import { postImage, postPublicaciones } from "../../helpers/publicacion";
-import { MapView } from "../layout/MapView";
+import { MapView } from "../maps/MapView";
 
 const schema = yup.object().shape({
   estado: yup.string(),
@@ -32,6 +32,29 @@ const schema = yup.object().shape({
 }).required();
 
 export const UploadLost = () => {
+
+  const [coords, setCoords] = useState({
+    longitude: 0,
+    latitude: 0,
+  });
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        console.log(position)
+        setCoords({
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+        });
+      },
+      function (error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+      },
+      {
+        enableHighAccuracy: true,
+      }
+    );
+  }, []);
 
   const { state } = useContext(AuthContext);
   
@@ -307,31 +330,8 @@ export const UploadLost = () => {
                   <div className="col-12 mt-0">
                     <label className="form-label mb-0 fw-bolder">Localización</label>
                   </div>
-                  <MapView />
-                  <div className="col-4">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" {...register('vacunado')} name="vacunado" id="vacunado" />
-                      <label className="form-check-label" htmlFor="vacunado">
-                        Vacunado
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" {...register('castrado')} name="castrado" id="castrado" />
-                      <label className="form-check-label" htmlFor="castrado">
-                        Castrado
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" {...register('desparasitado')} name="desparasitado" id="desparasitado" />
-                      <label className="form-check-label" htmlFor="desparasitado">
-                        Desparasitado
-                      </label>
-                    </div>
-                  </div>
+                  <MapView coords={coords} />
+                  
 
                   <hr className="my-4" />
 
