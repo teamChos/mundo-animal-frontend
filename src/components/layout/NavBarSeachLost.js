@@ -5,7 +5,7 @@ export const NavBarSeachLost = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-4">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-danger p-4">
                 <div className="container-fluid">
                     <Link className="btn btn-outline-light" to="/busquedas/publicacion">Agrega tu mascota</Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">

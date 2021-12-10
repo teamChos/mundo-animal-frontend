@@ -89,6 +89,10 @@ export const UploadLost = () => {
 
     const imagen = inputFileRef.current.files[0];
 
+    if(!imagen){
+      return console.log('no hay imagenes')
+    }
+
     const formData = new FormData();
     formData.append('imagen', imagen);
 
@@ -140,9 +144,8 @@ export const UploadLost = () => {
       imagen: public_id,
       tipo: 'busqueda',
       detalle: {
-        vacunado: e.vacunado,
-        castrado: e.castrado,
-        desparasitado: e.desparasitado
+        latitud: posicion.lat,
+        longitud: posicion.lng
       },
       descripcion: e.descripcion,
       telefono: e.telefono,
@@ -151,7 +154,9 @@ export const UploadLost = () => {
 
     const subirPublicacion = async (value) => {
 
-      const resp = await postPublicaciones('adopcion/registrar', value);
+      console.log(value);
+
+       const resp = await postPublicaciones('busqueda/registrar', value);
 
       if (resp.ok) {
         console.log('tudu bem');
@@ -161,7 +166,7 @@ export const UploadLost = () => {
         console.log(resp);
         console.log(resp.msg);
         return resp.msg;
-      }
+      } 
     };
 
     subirPublicacion(PublicacioneSchema);

@@ -9,9 +9,9 @@ export const Card = ({ tipo, mascota: { nombre, especie, personalidad }, imagen,
     const filtroCaracteristicas = (tipo) => {
         switch (tipo) {
             case 'adopcion':
-                return 'Adoptame';
+                return {nombre: 'Adoptame', color: 'primary'};
             case 'busqueda':
-                return 'Perdido';
+                return {nombre: 'Perdido', color: 'danger'};
             case 'gato':
                 return 'Gato';
             case 'perro':
@@ -29,6 +29,7 @@ export const Card = ({ tipo, mascota: { nombre, especie, personalidad }, imagen,
         };
     };
 
+    console.log(filtroCaracteristicas('busqueda'))
     return (
         <>
             <div key={uid} className="col-sm-2 mb-4">
@@ -57,9 +58,9 @@ export const Card = ({ tipo, mascota: { nombre, especie, personalidad }, imagen,
                             }</p>
                         </div>
                     </div>
-                    <Link className="card-footer text-center bg-primary text-white fw-bold text-decoration-none" to={`/${uid}`}>
+                    <Link className={`card-footer text-center bg-${filtroCaracteristicas(tipo).color} text-white fw-bold text-decoration-none`} to={`/${uid}`}>
                         {
-                            filtroCaracteristicas(tipo)
+                            filtroCaracteristicas(tipo).nombre
                         }
                     </Link>
                 </div>
