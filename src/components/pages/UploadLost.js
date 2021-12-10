@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-
 import { useHistory } from 'react-router-dom';
+
+import { Marker, Popup, useMapEvents } from 'react-leaflet';
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import { Icon } from 'leaflet'
 
 import { AuthContext } from "../../auth/AuthContext";
 
@@ -33,31 +36,45 @@ const schema = yup.object().shape({
 
 export const UploadLost = () => {
 
-  const [coords, setCoords] = useState({
-    longitude: -58.1828992,
-    latitude: -26.1846056,
-  });
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        console.log(position)
-        setCoords({
-          longitude: position.coords.longitude,
-          latitude: position.coords.latitude,
-        });
-      },
-      function (error) {
-        console.error("Error Code = " + error.code + " - " + error.message);
-      },
-      {
-        enableHighAccuracy: true,
-      }
-    );
-  }, []);
+  const [posicion, setPosicion] = useState(null);
+
+  const LocationMarker = () => {
+
+    const map = useMapEvents({
+        click(e) {
+            console.log(e.latlng)
+            setPosicion(e.latlng)
+            map.flyTo(e.latlng)
+        },
+/*              locationfound(e) {
+
+            console.log('aca')
+            console.log('aca')
+
+            setPosicion(e.latlng)
+            map.flyTo(e.latlng, map.getZoom())
+        }, */ 
+    });
+
+    return posicion === null ? null : (
+        <Marker
+            position={posicion}
+            icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })}
+        >
+            <Popup>
+                Aquí se perdió <br /> su mascota.
+            </Popup>
+        </Marker>
+    ) 
+};
+
+
+
+
 
   const { state } = useContext(AuthContext);
-  
+
   const history = useHistory();
 
   const inputFileRef = useRef();
@@ -79,22 +96,22 @@ export const UploadLost = () => {
     /*     var formdata = new FormData();
         formdata.append("imagen", fileInput.files[0], "/D:/Escritorio/dev/modelos mundoAnimal/b12dcbee-fdc9-4534-a448-a92daaf5f6ab (2).jpg"); */
 
-/*     var requestOptions = {
-      method: 'POST',
-      body: formData,
-      redirect: 'follow'
-    };
-
-    const resp = await fetch("https://mundo-animal-restserver.herokuapp.com/uploads", requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-
-    return console.log(resp); */
+    /*     var requestOptions = {
+          method: 'POST',
+          body: formData,
+          redirect: 'follow'
+        };
+    
+        const resp = await fetch("https://mundo-animal-restserver.herokuapp.com/uploads", requestOptions)
+          .then(response => response.json())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+    
+        return console.log(resp); */
 
     const subirImagen = async (value) => {
 
-      const {public_id, msg, ok} = await postImage('uploads', value);
+      const { public_id, msg, ok } = await postImage('uploads', value);
 
       if (ok) {
         return public_id;
@@ -330,8 +347,8 @@ export const UploadLost = () => {
                   <div className="col-12 mt-0">
                     <label className="form-label mb-0 fw-bolder">Localización</label>
                   </div>
-                  <MapView coords={coords} />
-                  
+                  <MapView component={LocationMarker} />
+
 
                   <hr className="my-4" />
 
