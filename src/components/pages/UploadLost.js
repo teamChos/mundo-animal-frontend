@@ -34,8 +34,8 @@ const schema = yup.object().shape({
 export const UploadLost = () => {
 
   const [coords, setCoords] = useState({
-    longitude: 0,
-    latitude: 0,
+    longitude: -58.1828992,
+    latitude: -26.1846056,
   });
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export const UploadLost = () => {
 
       if (ok) {
         return public_id;
-        /* history.replace('/adopciones') */
+        /* history.replace('/busquedas') */
       } else {
 
         return msg;
@@ -138,7 +138,7 @@ export const UploadLost = () => {
 
       if (resp.ok) {
         console.log('tudu bem');
-        /* history.replace('/adopciones') */
+        history.replace('/busquedas')
       } else {
         console.log('tudu mal');
         console.log(resp);

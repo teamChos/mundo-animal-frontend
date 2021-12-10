@@ -114,7 +114,7 @@ export const UploadAdoption = () => {
 
       if (resp.ok) {
         console.log('tudu bem');
-        /* history.replace('/adopciones') */
+        history.replace('/adopciones')
       } else {
         console.log('tudu mal');
         console.log(resp);
