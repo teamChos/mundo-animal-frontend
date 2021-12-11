@@ -1,9 +1,56 @@
-import React from 'react'
+import { Image, Transformation } from 'cloudinary-react';
+import React, { useState, useEffect } from 'react'
+import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import { getPublicaciones } from '../../helpers/publicacion';
 
 import './home.scss'
 
 export const Home = () => {
+
+    const [adopcion, setAdopcion] = useState(null)
+    const [busqueda, setBusqueda] = useState(null)
+
+    const [cargando, setCargando] = useState(true)
+
+    const MESES = [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+    ];
+
+    useEffect(() => {
+        const cargarPublicaciones = async () => {
+            const { ok, msg, adopcion: [publicacionAdopcion], busqueda: [publicacionBusqueda] } = await getPublicaciones('finalizado');
+            if (ok) {
+                setAdopcion(publicacionAdopcion);
+                setBusqueda(publicacionBusqueda);
+            };
+            setCargando(false);
+        };
+        cargarPublicaciones();
+    }, []);
+
+    if (cargando) {
+        return (<div className="position-absolute top-50 start-50 translate-middle">
+            <Spinner animation="border" variant="primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>)
+    };
+
+    const fechaAdop = new Date(adopcion.updatedAt);
+    const fechaBus = new Date(busqueda.updatedAt);
+
     return (
         <main>
             <div className="p-4 p-md-5 my-4 text-white rounded bg-primary">
@@ -18,29 +65,40 @@ export const Home = () => {
                 <div className="col-md-6">
                     <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div className="col p-4 d-flex flex-column position-static">
-                            <strong className="d-inline-block mb-2 text-primary">World</strong>
-                            <h3 className="mb-0">Featured post</h3>
-                            <div className="mb-1 text-muted">Nov 12</div>
-                            <p className="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                            <a href="/#" className="stretched-link">Continue reading</a>
+                            <strong className="d-inline-block mb-2 text-primary">Última adopción</strong>
+                            <h3 className="mb-0">{adopcion.mascota.nombre}</h3>
+                            <div className="mb-1 text-muted">{`${MESES[fechaAdop.getMonth()]} ${fechaAdop.getDay()}`}</div>
+                            <p className="card-text mb-auto">{adopcion.descripcion}</p>
+                            {/* <a href="/#" className="stretched-link">Continue reading</a> */}
                         </div>
                         <div className="col-auto d-none d-lg-block">
-                            <svg className="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+                            <Image
+                                className="bd-placeholder-img"
+                                cloudName='dawjd5cx8'
+                                publicId={adopcion.imagen}
+                            >
+                                <Transformation height="250" width="200" aspectRatio="1.5" crop="fill" />
+                            </Image>
                         </div>
                     </div>
                 </div>
                 <div className="col-md-6">
                     <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div className="col p-4 d-flex flex-column position-static">
-                            <strong className="d-inline-block mb-2 text-success">Design</strong>
-                            <h3 className="mb-0">Post title</h3>
-                            <div className="mb-1 text-muted">Nov 11</div>
-                            <p className="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                            <a href="/#" className="stretched-link">Continue reading</a>
+                            <strong className="d-inline-block mb-2 text-success">Último rescate</strong>
+                            <h3 className="mb-0">{busqueda.mascota.nombre}</h3>
+                            <div className="mb-1 text-muted">{`${MESES[fechaBus.getMonth()]} ${fechaAdop.getDay()}`}</div>
+                            <p className="mb-auto">{busqueda.descripcion}</p>
+                            {/* <a href="/#" className="stretched-link">Continue reading</a> */}
                         </div>
                         <div className="col-auto d-none d-lg-block">
-                            <svg className="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <Image
+                                className="bd-placeholder-img"
+                                cloudName='dawjd5cx8'
+                                publicId={busqueda.imagen}
+                            >
+                                <Transformation height="250" width="200" aspectRatio="1.5" crop="fill" />
+                            </Image>
 
                         </div>
                     </div>

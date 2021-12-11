@@ -36,8 +36,6 @@ export const MarkersGo = (props) => {
 
     const { places } = props;
 
-    console.log(places[1].detalle)
-
     const markers = places.map((place, i) => (
         <Marker key={i} position={[place.detalle.latitud, place.detalle.longitud]} icon={new Icon({ iconUrl: mundoLogo, iconSize: [30, 30], iconAnchor: [12, 41] })}>
             <Popup>
