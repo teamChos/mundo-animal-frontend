@@ -7,6 +7,7 @@ import { startLogout } from '../../actions/auth';
 import { AuthContext } from '../../auth/AuthContext';
 
 import logo from '../../images/logo-ma.svg'
+import pokebola from '../../images/pokebola.png'
 
 export const NavBar = () => {
 
@@ -34,7 +35,7 @@ export const NavBar = () => {
                             <Link className="nav-link mx-3" to="/busquedas">Perdidos</Link>
                         </li>
                         {/* <li className="nav-item">
-                            <Link className="nav-link mx-3" to="/encuentralos">Encuentralos a todos</Link>
+                            <Link className="nav-link mx-3" to="/encuentralos"><img src={pokebola} style={{height:30,width:30}} alt=""/></Link>
                         </li> */}
                     </ul>
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto bd-highlight">

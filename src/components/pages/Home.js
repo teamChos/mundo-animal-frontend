@@ -4,6 +4,10 @@ import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { getPublicaciones } from '../../helpers/publicacion';
 
+import facebook from '../../images/facebook.png'
+import instagram from '../../images/instagram.png'
+import twitter from '../../images/twitter.png'
+
 import './home.scss'
 
 export const Home = () => {
@@ -53,7 +57,7 @@ export const Home = () => {
 
     return (
         <main>
-            <div className="p-4 p-md-5 my-4 text-white rounded bg-primary">
+            <div className="p-4 p-md-5 my-4 text-white rounded bg-primary backgroud-mundo-animal">
                 <div className="col-md-6 px-0">
                     <h1 className="display-4 fst-italic">Adopta, salva una vida, gana un amigo</h1>
                     <p className="lead my-3">Somos una plataforma web que busca devolver a las mascotas perdidas a sus dueños y proporcionar un lugar donde ofrecer a nuestros animalitos en adopción.</p>
@@ -112,7 +116,8 @@ export const Home = () => {
                     <div className="position-sticky" style={{ top: 32 }}>
                         <div className="p-4 mb-3 bg-light rounded">
                             <h4 className="fst-italic">About</h4>
-                            <p className="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+                            <p className="mb-0">Buscamos ser el punto central de las publicaciones de diversas redes. Reunir a los animales publicados y unificarlos en una sola base de datos.
+                                Mundo ofrece 2 áreas principales de interés.</p>
                         </div>
 
 
@@ -121,12 +126,18 @@ export const Home = () => {
                 </div>
                 <div className="col-md-4">
                     <div className="p-4">
-                        <h4 className="fst-italic">Elsewhere</h4>
-                        <ol className="list-unstyled">
-                            <li><a href="/#">GitHub</a></li>
-                            <li><a href="/#">Twitter</a></li>
-                            <li><a href="/#">Facebook</a></li>
-                        </ol>
+                        <h4 className="fst-italic text-center">Redes sociales</h4>
+                        <div className="d-flex flex-row justify-content-center">
+                            <div className="nav-item">
+                                <a className="nav-link mx-3" href="https://www.instagram.com/mundo.animal777/" target="_blank" rel='noreferrer'><img src={facebook} style={{ height: 30, width: 30 }} alt="" /></a>
+                            </div>
+                            <div className="nav-item">
+                                <a className="nav-link mx-3" href="https://www.instagram.com/mundo.animal777/" target="_blank" rel='noreferrer'><img src={instagram} style={{ height: 30, width: 30 }} alt="" /></a>
+                            </div>
+                            <div className="nav-item">
+                                <a className="nav-link mx-3" href="https://www.instagram.com/mundo.animal777/" target="_blank" rel='noreferrer'><img src={twitter} style={{ height: 30, width: 30 }} alt="" /></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

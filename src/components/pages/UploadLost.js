@@ -42,32 +42,32 @@ export const UploadLost = () => {
   const LocationMarker = () => {
 
     const map = useMapEvents({
-        click(e) {
-            console.log(e.latlng)
-            setPosicion(e.latlng)
-            map.flyTo(e.latlng)
-        },
-/*              locationfound(e) {
-
-            console.log('aca')
-            console.log('aca')
-
-            setPosicion(e.latlng)
-            map.flyTo(e.latlng, map.getZoom())
-        }, */ 
+      click(e) {
+        console.log(e.latlng)
+        setPosicion(e.latlng)
+        map.flyTo(e.latlng)
+      },
+      /*              locationfound(e) {
+      
+                  console.log('aca')
+                  console.log('aca')
+      
+                  setPosicion(e.latlng)
+                  map.flyTo(e.latlng, map.getZoom())
+              }, */
     });
 
     return posicion === null ? null : (
-        <Marker
-            position={posicion}
-            icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })}
-        >
-            <Popup>
-                Aquí se perdió <br /> su mascota.
-            </Popup>
-        </Marker>
-    ) 
-};
+      <Marker
+        position={posicion}
+        icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })}
+      >
+        <Popup>
+          Aquí se perdió <br /> su mascota.
+        </Popup>
+      </Marker>
+    )
+  };
 
 
 
@@ -89,7 +89,7 @@ export const UploadLost = () => {
 
     const imagen = inputFileRef.current.files[0];
 
-    if(!imagen){
+    if (!imagen) {
       return console.log('no hay imagenes')
     }
 
@@ -156,7 +156,7 @@ export const UploadLost = () => {
 
       console.log(value);
 
-       const resp = await postPublicaciones('busqueda/registrar', value);
+      const resp = await postPublicaciones('busqueda/registrar', value);
 
       if (resp.ok) {
         console.log('tudu bem');
@@ -166,7 +166,7 @@ export const UploadLost = () => {
         console.log(resp);
         console.log(resp.msg);
         return resp.msg;
-      } 
+      }
     };
 
     subirPublicacion(PublicacioneSchema);
@@ -201,7 +201,7 @@ export const UploadLost = () => {
 
           <div className="row g-5">
             <div className="px-5 col-md-5 col-lg-4 order-md-last text-center">
-              <h4 className="d-flex justify-content-between align-items-center my-3">
+              <h4 className="d-flex justify-content-center align-items-center my-3">
                 <span className="text-primary fw-bolder">Sube una foto</span>
               </h4>
               {/*               <ul className="list-group mb-3">
@@ -239,7 +239,7 @@ export const UploadLost = () => {
                 </li>
               </ul> */}
 
-              {image && <img src={image} alt="" width="160" height="160" />}
+              <img src={image} className="my-2" style={{ borderRadius: 20 }} alt="" width="160" height="160" />
 
               {/* <input type="file" accept="image/*" ref={inputFileRef} onChange={processImage}></input> */}
               <div className="mb-3 mt-3">

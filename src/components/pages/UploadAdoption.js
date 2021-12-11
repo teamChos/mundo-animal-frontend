@@ -55,22 +55,22 @@ export const UploadAdoption = () => {
     /*     var formdata = new FormData();
         formdata.append("imagen", fileInput.files[0], "/D:/Escritorio/dev/modelos mundoAnimal/b12dcbee-fdc9-4534-a448-a92daaf5f6ab (2).jpg"); */
 
-/*     var requestOptions = {
-      method: 'POST',
-      body: formData,
-      redirect: 'follow'
-    };
-
-    const resp = await fetch("https://mundo-animal-restserver.herokuapp.com/uploads", requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-
-    return console.log(resp); */
+    /*     var requestOptions = {
+          method: 'POST',
+          body: formData,
+          redirect: 'follow'
+        };
+    
+        const resp = await fetch("https://mundo-animal-restserver.herokuapp.com/uploads", requestOptions)
+          .then(response => response.json())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+    
+        return console.log(resp); */
 
     const subirImagen = async (value) => {
 
-      const {public_id, msg, ok} = await postImage('uploads', value);
+      const { public_id, msg, ok } = await postImage('uploads', value);
 
       if (ok) {
         return public_id;
@@ -155,7 +155,7 @@ export const UploadAdoption = () => {
 
           <div className="row g-5">
             <div className="px-5 col-md-5 col-lg-4 order-md-last text-center">
-              <h4 className="d-flex justify-content-between align-items-center my-3">
+              <h4 className="d-flex justify-content-center align-items-center my-3">
                 <span className="text-primary fw-bolder">Sube una foto</span>
               </h4>
               {/*               <ul className="list-group mb-3">
@@ -193,7 +193,7 @@ export const UploadAdoption = () => {
                 </li>
               </ul> */}
 
-              {image && <img src={image} alt="" width="160" height="160" />}
+              <img src={image} className="my-2" style={{ borderRadius: 20 }} alt="" width="160" height="160" />
 
               {/* <input type="file" accept="image/*" ref={inputFileRef} onChange={processImage}></input> */}
               <div className="mb-3 mt-3">
