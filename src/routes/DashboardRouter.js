@@ -12,6 +12,7 @@ import { Busqueda } from '../components/pages/Busqueda';
 import { Publicacion } from '../components/pages/Publicacion';
 
 import { UploadRouter } from './UploadRouter';
+import { MundoAnimalGo } from '../components/pages/MundoAnimalGo';
 
 export const DashboardRouter = () => {
     return (
@@ -22,6 +23,7 @@ export const DashboardRouter = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/adopciones' component={Adopcion} />
                 <Route exact path='/busquedas' component={Busqueda} />
+                <Route exact path='/encuentralos' component={MundoAnimalGo} />
                 <Route exact path='/:tipo/publicacion' component={UploadRouter} />
                 <Route path='/:id' component={Publicacion} />
 

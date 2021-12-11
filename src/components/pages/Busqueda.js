@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Card } from '../layout/Card';
 import { getPublicaciones } from '../../helpers/publicacion';
 import { NavBarSeachLost } from '../layout/NavBarSeachLost';
+import { Spinner } from 'react-bootstrap';
 
 export const Busqueda = () => {
 
@@ -22,7 +23,11 @@ export const Busqueda = () => {
     }, []);
 
     if (cargando) {
-        return <div>Cargando, espere un momento...  </div>
+        return (<div className="position-absolute top-50 start-50 translate-middle">
+        <Spinner animation="border" variant="primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
+    </div>)
     };
 
     if (!publicaciones.length) {

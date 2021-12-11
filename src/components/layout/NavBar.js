@@ -28,14 +28,14 @@ export const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto bd-highlight">
                         <li className="nav-item">
-                            <Link className="nav-link mx-3" to="/adopciones">Adopción</Link>
+                            <Link className="nav-link mx-3" to="/adopciones">Adopciones</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link mx-3" to="/busquedas">Perdidos</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link mx-3 disabled" to="/#">Contacto</Link>
-                        </li>
+                        {/* <li className="nav-item">
+                            <Link className="nav-link mx-3" to="/encuentralos">Encuentralos a todos</Link>
+                        </li> */}
                     </ul>
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto bd-highlight">
                         <li className="nav-item">

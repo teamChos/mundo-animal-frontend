@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 
 import { Marker, Popup, useMapEvents } from 'react-leaflet';
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import markerIconPng from "../../images/marcador.svg"
 import { Icon } from 'leaflet'
 
 import { AuthContext } from "../../auth/AuthContext";

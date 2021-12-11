@@ -7,7 +7,8 @@ export const NavBarSeachLost = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-danger p-4">
                 <div className="container-fluid">
-                    <Link className="btn btn-outline-light" to="/busquedas/publicacion">Agrega tu mascota</Link>
+                    <Link className="btn btn-outline-light" to="/busquedas/publicacion"><b>Agrega tu mascota</b></Link>
+                    <Link className="btn btn-outline-light mx-4" to="/encuentralos">Atrápalos a todos</Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {/* <li className="nav-item">

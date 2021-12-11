@@ -10,6 +10,7 @@ import { AuthContext } from '../auth/AuthContext';
 import { startChecking } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { Spinner } from 'react-bootstrap';
 
 export const AppRouter = () => {
 
@@ -20,7 +21,13 @@ export const AppRouter = () => {
     }, [dispatch])
 
     if (checking) {
-        return (<h1>Espere...</h1>)
+        return (
+            <div className="position-absolute top-50 start-50 translate-middle">
+                <Spinner animation="border" variant="primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        )
     }
 
     return (

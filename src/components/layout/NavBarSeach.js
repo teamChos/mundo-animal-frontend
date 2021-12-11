@@ -7,7 +7,7 @@ export const NavBarSeach = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-4">
                 <div className="container-fluid">
-                    <Link className="btn btn-outline-light" to="/adopciones/publicacion">Agrega tu mascota</Link>
+                    <Link className="btn btn-outline-light" to="/adopciones/publicacion"><b>Agrega tu mascota</b></Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {/* <li className="nav-item">

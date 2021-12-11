@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Card } from '../layout/Card';
 import { getPublicaciones } from '../../helpers/publicacion';
 import { NavBarSeach } from '../layout/NavBarSeach';
+import { Spinner } from 'react-bootstrap';
 
 export const Adopcion = () => {
 
@@ -22,7 +23,11 @@ export const Adopcion = () => {
     }, []);
 
     if (cargando) {
-        return <div>Cargando, espere un momento...  </div>
+        return (<div className="position-absolute top-50 start-50 translate-middle">
+            <Spinner animation="border" variant="primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>)
     };
 
     if (!publicaciones.length) {
@@ -32,7 +37,7 @@ export const Adopcion = () => {
     return (
         <div className="row mx-0">
             <NavBarSeach />
-{/*             <div className="col-sm-2">
+            {/*             <div className="col-sm-2">
                 <div className="card mt-4 w-100 h-100 border-0">
                     <div className='m-3'>
 
