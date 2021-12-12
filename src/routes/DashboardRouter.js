@@ -13,6 +13,7 @@ import { Publicacion } from '../components/pages/Publicacion';
 
 import { UploadRouter } from './UploadRouter';
 import { MundoAnimalGo } from '../components/pages/MundoAnimalGo';
+import { Footer } from '../components/layout/Footer';
 
 export const DashboardRouter = () => {
     return (
@@ -29,6 +30,8 @@ export const DashboardRouter = () => {
 
                 <Redirect to='/' />
             </Switch>
+
+            {/* <Footer /> */}
         </>
-    )
-}
+    );
+};
