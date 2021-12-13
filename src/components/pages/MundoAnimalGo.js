@@ -13,8 +13,8 @@ import { Spinner } from 'react-bootstrap';
 export const MundoAnimalGo = () => {
 
 
-    const position = [-26.1846056, -58.1828992]
-    const [posicion, setPosicion] = useState([])
+    /* const position = [-26.1846056, -58.1828992] */
+    const [posicion, setPosicion] = useState([-26.1846056, -58.1828992])
     const [coords, setCoords] = useState([]);
     const [cargando, setCargando] = useState(true);
 
@@ -64,7 +64,7 @@ export const MundoAnimalGo = () => {
     return (
         <>
             <div className='Map'>
-                <MapContainer className='Map-container' style={{ height: '100vh', width: '100%' }} center={position} zoom={13} scrollWheelZoom={true}>
+                <MapContainer className='Map-container' style={{ height: '100vh', width: '100%' }} center={posicion} zoom={13} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
